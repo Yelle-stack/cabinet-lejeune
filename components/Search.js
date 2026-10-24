@@ -4,6 +4,17 @@ import { BIENS } from "@/data/biens";
 
 const fmt = (n) => n.toLocaleString("fr-FR");
 const STEPS = { rent: [600, 800, 1000, 1500, 2000, 2500], sell: [200000, 300000, 400000, 500000] };
+const TYPES = {
+  sell: [
+    "T2", "T3", "Duplex / Triplex", "Maison individuelle", "Maison", "Pavillon",
+    "Maison de ville", "Maison traditionnelle", "Maison en pierres",
+    "Terrain à bâtir", "Parking couvert",
+  ],
+  rent: [
+    "Appartement rénové", "T2", "T3", "Duplex / Triplex",
+    "Maison de ville", "Maison en pierres", "Parking externe",
+  ],
+};
 const init = { ty: "", ci: "", bu: 0, ro: 0 };
 
 export default function Search() {
@@ -17,7 +28,7 @@ export default function Search() {
   }, []);
 
   const pool = useMemo(() => BIENS.filter((b) => b.t === t), [t]);
-  const types = [...new Set(pool.map((b) => b.ty))];
+  const types = TYPES[t];
   const cities = [...new Set(pool.map((b) => b.c))].sort();
   const res = pool.filter((b) => (!f.ty || b.ty === f.ty) && (!f.ci || b.c === f.ci) && (!f.bu || b.p <= f.bu) && b.r >= f.ro);
   const set = (k) => (e) => setF({ ...f, [k]: k === "bu" || k === "ro" ? +e.target.value : e.target.value });
