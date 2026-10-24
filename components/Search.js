@@ -11,8 +11,8 @@ const TYPES = {
     "Terrain à bâtir", "Parking couvert",
   ],
   rent: [
-    "Appartement rénové", "T2", "T3", "Duplex / Triplex",
-    "Maison de ville", "Maison en pierres", "Parking externe",
+    "T2", "T3", "Duplex / Triplex",
+    "Maison de ville", "Maison en pierres", "Parking couvert",
   ],
 };
 const init = { ty: "", ci: "", bu: 0, ro: 0 };
