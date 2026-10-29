@@ -15,6 +15,16 @@ const TYPES = {
     "Maison de ville", "Maison en pierres", "Parking couvert",
   ],
 };
+
+const CITIES = {
+  sell: [
+    "Apremont", "Chambly", "Chantilly", "Cramoisy", "Gouvieux",
+    "Lamorlaye", "Liancourt", "Précy-sur-Oise",
+  ],
+  rent: [
+    "Apremont", "Chantilly", "Cramoisy", "Gouvieux", "Lamorlaye", "Liancourt",
+  ],
+};
 const init = { ty: "", ci: "", bu: 0, ro: 0 };
 
 export default function Search() {
@@ -29,7 +39,7 @@ export default function Search() {
 
   const pool = useMemo(() => BIENS.filter((b) => b.t === t), [t]);
   const types = TYPES[t];
-  const cities = [...new Set(pool.map((b) => b.c))].sort();
+  const cities = CITIES[t];
   const res = pool.filter((b) => (!f.ty || b.ty === f.ty) && (!f.ci || b.c === f.ci) && (!f.bu || b.p <= f.bu) && b.r >= f.ro);
   const set = (k) => (e) => setF({ ...f, [k]: k === "bu" || k === "ro" ? +e.target.value : e.target.value });
   const switchTo = (m) => { setT(m); setF(init); };
@@ -63,7 +73,7 @@ export default function Search() {
           <p className="lead">{res.length} bien{res.length > 1 ? "s" : ""} disponible{res.length > 1 ? "s" : ""} {t === "rent" ? "à la location" : "à la vente"}</p>
           <div className="grid" aria-live="polite">
             {res.length ? res.map((b) => (
-              <article className="card" key={b.ti}>
+              <article className="card" key={`${b.t}-${b.ti}`}>
                 <div className="ph" style={{ background: `linear-gradient(135deg,hsl(${b.h} 38% 38%),hsl(${b.h + 30} 45% 55%))` }}>
                   <span className="tag">{b.ty}</span>
                   <svg viewBox="0 0 64 64" fill="none" stroke="#fff" strokeWidth="3" strokeLinejoin="round" aria-hidden="true"><path d="M8 30 32 10l24 20M14 26v28h36V26M26 54V38h12v16" /></svg>
