@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useMemo, useState } from "react";
 import { BIENS } from "@/data/biens";
+import Image from "next/image";
 
 const fmt = (n) => n.toLocaleString("fr-FR");
 const STEPS = { rent: [600, 800, 1000, 1500, 2000, 2500], sell: [200000, 300000, 400000, 500000] };
@@ -74,10 +75,20 @@ export default function Search() {
           <div className="grid" aria-live="polite">
             {res.length ? res.map((b) => (
               <article className="card" key={`${b.t}-${b.ti}`}>
-                <div className="ph" style={{ background: `linear-gradient(135deg,hsl(${b.h} 38% 38%),hsl(${b.h + 30} 45% 55%))` }}>
-                  <span className="tag">{b.ty}</span>
-                  <svg viewBox="0 0 64 64" fill="none" stroke="#fff" strokeWidth="3" strokeLinejoin="round" aria-hidden="true"><path d="M8 30 32 10l24 20M14 26v28h36V26M26 54V38h12v16" /></svg>
-                </div>
+               <div className="ph" style={{ background: `linear-gradient(135deg,hsl(${b.h} 38% 38%),hsl(${b.h + 30} 45% 55%))` }}>
+              {b.img ? (
+             <Image
+               src={b.img}
+               alt={`${b.ti} à ${b.c}`}
+               fill
+               sizes="(max-width: 560px) 100vw, (max-width: 900px) 50vw, 33vw"
+               style={{ objectFit: "cover" }}
+             />
+            ) : (
+             <svg viewBox="0 0 64 64" fill="none" stroke="#fff" strokeWidth="3" strokeLinejoin="round" aria-hidden="true"><path d="M8 30 32 10l24 20M14 26v28h36V26M26 54V38h12v16" /></svg>
+            )}
+            <span className="tag">{b.ty}</span>
+            </div>   
                 <div className="cb">
                   <h3>{b.ti}</h3>
                   <div className="loc">{b.c}</div>
