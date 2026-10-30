@@ -73,7 +73,7 @@ export default function Search() {
           <h2 className="sec-h">Biens à découvrir</h2>
           <p className="lead">{res.length} bien{res.length > 1 ? "s" : ""} disponible{res.length > 1 ? "s" : ""} {t === "rent" ? "à la location" : "à la vente"}</p>
           <div className="grid" aria-live="polite">
-            {res.length ? res.map((b) => (
+            {res.length ? res.map((b, i) => (
               <article className="card" key={`${b.t}-${b.ti}`}>
                <div className="ph" style={{ background: `linear-gradient(135deg,hsl(${b.h} 38% 38%),hsl(${b.h + 30} 45% 55%))` }}>
               {b.img ? (
@@ -81,6 +81,7 @@ export default function Search() {
                src={b.img}
                alt={`${b.ti} à ${b.c}`}
                fill
+               loading={i < 3 ? "eager" : "lazy"}
                sizes="(max-width: 560px) 100vw, (max-width: 900px) 50vw, 33vw"
                style={{ objectFit: "cover" }}
              />
