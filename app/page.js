@@ -2,11 +2,12 @@ import Header, { ModeLink } from "@/components/Header";
 import Search from "@/components/Search";
 import { ContactForm, Newsletter } from "@/components/ContactForm";
 import { ACTUS } from "@/data/biens";
+import Link from "next/link";
 
 const SERVICES = [
   ["🔑", "Location", "Appartements, maisons de village, bureaux : des offres variées toute l’année, avec des visites réactives.", "rent", "#biens", "Voir les locations →"],
   ["🏡", "Vente", "Premier achat, investissement ou déménagement : nous accompagnons vendeur et acquéreur à chaque étape.", "sell", "#biens", "Voir les ventes →"],
-  ["📋", "Gestion locative", "Sélection des locataires, suivi des travaux, comptabilité : un service modulable selon vos souhaits.", null, "#contact", "Demander un devis →"],
+  ["📋", "Gestion locative", "Sélection des locataires, suivi des travaux, comptabilité : un service modulable selon vos souhaits.", null, "/gestion-locative", "En savoir plus →"],
 ];
 const CHECKS = [
   "Le cadre juridique des transactions et des locations",
@@ -38,7 +39,7 @@ export default function Home() {
             {SERVICES.map(([ic, h, p, mode, href, link]) => (
               <div className="card svc" key={h}>
                 <div className="ic" aria-hidden="true">{ic}</div><h3>{h}</h3><p>{p}</p>
-                {mode ? <ModeLink mode={mode} href={href}>{link}</ModeLink> : <a href={href}>{link}</a>}
+                {mode ? <ModeLink mode={mode} href={href}>{link}</ModeLink> : <Link href={href}>{link}</Link>}
               </div>
             ))}
           </div>

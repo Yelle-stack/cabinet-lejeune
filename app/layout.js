@@ -12,7 +12,7 @@ export const viewport = { width: "device-width", initialScale: 1, viewportFit: "
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="fr" className={`${fraunces.variable} ${inter.variable}`}>
+    <html lang="fr" data-scroll-behavior="smooth" className={`${fraunces.variable} ${inter.variable}`}>
       <body>{children}</body>
     </html>
   );

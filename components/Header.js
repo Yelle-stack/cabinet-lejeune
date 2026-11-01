@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import Link from "next/link"
 
 const setMode = (m) => window.dispatchEvent(new CustomEvent("mode", { detail: m }));
 
@@ -20,7 +21,7 @@ export default function Header() {
             <li><a className="on" href="#top">Accueil</a></li>
             <li><ModeLink mode="rent" href="#biens">Location</ModeLink></li>
             <li><ModeLink mode="sell" href="#biens">Vente</ModeLink></li>
-            <li><a href="#services">Gestion</a></li>
+            <li><Link href="/gestion-locative">Gestion</Link></li>
             <li><a href="#actus">Actualités</a></li>
             <li><a href="#contact">Contact</a></li>
           </ul>
