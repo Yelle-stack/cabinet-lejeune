@@ -85,7 +85,8 @@ export default function Home() {
           <div><h4>Contact</h4><p><a href="tel:+33344276344">03 44 27 63 44</a><br /><a href="mailto:contact@lejeuneimmobilier.fr">contact@lejeuneimmobilier.fr</a><br />
             <a href="https://www.openstreetmap.org/search?query=14%20rue%20Gaston%20Wateau%20Pr%C3%A9cy-sur-Oise" target="_blank" rel="noopener noreferrer">Voir sur la carte ↗</a></p></div>
         </div>
-        <div className="legal"><span>Mentions légales · Paramètres cookies</span><span>Maquette de redesign à but d’exercice. Annonces et visuels fictifs.</span></div>
+        <div className="legal"><span><Link href="/mentions-legales">Mentions légales</Link></span>
+          <span>Maquette de redesign à but d’exercice. Annonces et visuels fictifs.</span></div>
       </div></footer>
     </>
   );
