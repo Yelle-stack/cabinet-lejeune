@@ -114,3 +114,10 @@ nav ul.open{display:flex}nav li a{display:block;padding:12px 0}
 .detail-grid{grid-template-columns:1fr}.detail-box{position:static}}
 @media (max-width:560px){.grid,.row2,.fields{grid-template-columns:1fr}.hero{padding:48px 0 100px}section{padding:52px 0}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+
+.news p{color:var(--muted);font-size:14px;margin:0 0 14px}
+.article{max-width:760px}
+.article time{display:block;color:var(--muted);font-size:14px}
+.article h1{margin:4px 0 24px}
+.article p{margin:0 0 16px;line-height:1.8}
+.article .btn{margin-top:12px}

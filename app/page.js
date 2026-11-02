@@ -1,7 +1,7 @@
 import Header, { ModeLink } from "@/components/Header";
 import Search from "@/components/Search";
 import { ContactForm, Newsletter } from "@/components/ContactForm";
-import { ACTUS } from "@/data/biens";
+import { ACTUS } from "@/data/actus";
 import Link from "next/link";
 
 const SERVICES = [
@@ -60,11 +60,17 @@ export default function Home() {
           <h2 className="sec-h">Nouveautés immobilières</h2>
           <p className="lead"></p>
           <div className="grid">
-            {ACTUS.map(([d, t]) => (
-              <article className="card news" key={t}><time>{d}</time><h3>{t}</h3><a href="#actus">Savoir plus →</a></article>
-            ))}
-          </div>
-        </div></section>
+           {ACTUS.map((a) => (
+           <article className="card news" key={a.slug}>
+           <time>{a.date}</time>
+           <h3>{a.titre}</h3>
+           <p>{a.resume}</p>
+          <Link href={`/actualites/${a.slug}`}>Savoir plus →</Link>
+          </article>
+          ))}
+         </div>
+        </div>
+        </section>
 
         <section className="contact" id="contact"><div className="wrap two">
           <div><h2 className="sec-h">Nous écrire</h2><p className="lead">Une question, un projet, une visite à organiser ? Nous vous répondons rapidement.</p><ContactForm /></div>
