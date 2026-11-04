@@ -1,6 +1,6 @@
 # Cabinet Immobilier Lejeune – redesign (Next.js)
 
-![Aperçu du site Cabinet Lejeune](photo-cabinet-lejeune.png)
+![image alt](https://github.com/Yelle-stack/cabinet-lejeune/blob/a265d8b60954c3f642b1bef16222c2e5ee88aa68/photo-cabinet-lejeune.png)
 
 ## Démarrer
 
